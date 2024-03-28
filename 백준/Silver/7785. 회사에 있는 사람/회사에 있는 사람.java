@@ -1,36 +1,30 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int count = Integer.parseInt(br.readLine());
-
-        HashMap<String, String> map = new HashMap<>();
-
-        String[] infos;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        Map<String, String> map = new HashMap<>();
 
         for (int i = 0; i < count; i++) {
-            infos = br.readLine().split(" ");
+            String key = scanner.next();
+            String value = scanner.next();
 
-            if (map.containsKey(infos[0])) {
-                map.remove(infos[0]);
+            if (map.containsKey(key)) {
+                map.remove(key);
             } else {
-                map.put(infos[0], infos[1]);
+                map.put(key, value);
             }
         }
 
-        ArrayList<String> arrayList = new ArrayList<>(map.keySet());
+        List<String> sortedKeys = new ArrayList<>(map.keySet());
+        sortedKeys.sort(Collections.reverseOrder());
 
-        Collections.sort(arrayList, Collections.reverseOrder());
-
-        for (String li:arrayList) {
-            System.out.println(li);
+        StringBuilder sb = new StringBuilder();
+        for (String key : sortedKeys) {
+            sb.append(key).append("\n");
         }
+
+        System.out.print(sb);
     }
 }

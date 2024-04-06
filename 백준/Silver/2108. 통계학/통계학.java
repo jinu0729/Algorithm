@@ -75,11 +75,12 @@ public class Main {
         for (int i = 1; i < arr.length; i++) {
             // count가 높을 경우
             if (hashMap.get(arr[i]) > count) {
+		        // 성준님이 알려주심!
                 pq.clear();
                 pq.offer(arr[i]);
                 num = arr[i];
                 count = hashMap.get(arr[i]);
-                // 중복 방지를 위해 count가 같지만 정수가 같지 않을때만 offer한다
+            // 중복 방지를 위해 count가 같지만 정수가 같지 않을때만 offer한다
             } else if (hashMap.get(arr[i]) == count && num != arr[i]) {
                 pq.offer(arr[i]);
             }

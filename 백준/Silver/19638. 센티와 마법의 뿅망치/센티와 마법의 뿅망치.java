@@ -40,11 +40,11 @@ public class Main {
         // 뿅망치 횟수
         int T = Integer.parseInt(st.nextToken());
         // 거인의 키
-        PriorityQueue<Integer> giants = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        PriorityQueue<Integer> pq = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
         // 거인의 키 초기화
-        while (N-- > 0) {
-            giants.offer(Integer.parseInt(br.readLine()));
+        for (int i = 0; i < N; i++) {
+            pq.offer(Integer.parseInt(br.readLine()));
         }
 
         // 뿅망치 사용 횟수
@@ -53,13 +53,13 @@ public class Main {
         // 뿅망치 사용 반복문
         while (T-- > 0) {
             // 센티와 거인의 키 비교
-            if (giants.peek() < H || giants.peek() <= 1) break;
+            if (H > pq.peek() || pq.peek() == 1) break;
 
             // 뿅망치 사용 후 카운트 증가
-            giants.offer(giants.poll() / 2);
+            pq.offer(pq.poll() / 2);
             count++;
         }
 
-        System.out.print((giants.peek() < H) ? "YES\n" + count : "NO\n" + giants.peek());
+        System.out.print((H > pq.peek()) ? "YES" + "\n" + count : "NO" + "\n" + pq.peek());
     }
 }

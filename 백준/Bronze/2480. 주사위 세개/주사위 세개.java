@@ -1,31 +1,26 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String[] sArr = br.readLine().split(" ");
-        br.close();
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
         int price = 0;
 
-        int dice1 = Integer.parseInt(sArr[0]);
-        int dice2 = Integer.parseInt(sArr[1]);
-        int dice3 = Integer.parseInt(sArr[2]);
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
 
-
-        // 같은 눈이 2개만 나오는 경우에는 1,000원+(같은 눈)×100원의 상금을 받게 된다.
-
-        if (dice1 == dice2 && dice2 == dice3) {
-            price = 10000 + dice1 * 1000;
-        } else if (dice1 == dice2 || dice2 == dice3 || dice1 == dice3) {
-            int sameDice = (dice1 == dice2) ? dice1 : dice3;
-            price = 1000 + sameDice * 100;
+        if (a == b && b == c) {
+            price = 10000 + a * 1000;
+        } else if (a == b || a == c || b == c) {
+            int same = (a == b) ? a : c;
+            price = 1000 + same * 100;
         } else {
-            int maxDice = Math.max(Math.max(dice1, dice2), dice3);
-            price = maxDice * 100;
+            int max = Math.max(Math.max(a, b), c);
+            price = max * 100;
         }
 
         System.out.println(price);

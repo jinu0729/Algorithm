@@ -7,16 +7,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int a = Integer.parseInt(br.readLine());
-        int b = Integer.parseInt(br.readLine());
+        String b = br.readLine();
 
-        String bStr = String.valueOf(b);
-
-        for (int i = bStr.length() - 1; i >= 0; i--) {
-            int c = bStr.charAt(i) - '0';
+        for (int i = b.length() - 1; i >= 0; i--) {
+            int c = b.charAt(i) - '0';
 
             System.out.println(a * c);
         }
 
-        System.out.println(a * b);
+        System.out.println(a * Integer.parseInt(b));
     }
 }

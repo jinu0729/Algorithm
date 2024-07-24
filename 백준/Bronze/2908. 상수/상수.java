@@ -1,30 +1,30 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        String[] arr = br.readLine().split(" ");
-
-        int a = reverseInt(Integer.parseInt(arr[0]));
-        int b = reverseInt(Integer.parseInt(arr[1]));
+        int a = reverseInt(Integer.parseInt(st.nextToken()));
+        int b = reverseInt(Integer.parseInt(st.nextToken()));
 
         int max = Math.max(a, b);
 
-        System.out.println(max);
+        bw.write(max + "");
+        bw.flush();
     }
 
     private static int reverseInt(int num) {
         int reversed = 0;
-        
+
         while (num != 0) {
             int digit = num % 10;
             reversed = reversed * 10 + digit;
             num /= 10;
         }
-        
+
         return reversed;
     }
 }

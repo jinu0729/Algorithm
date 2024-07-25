@@ -1,37 +1,47 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = sc.nextInt();
+        int N = Integer.parseInt(br.readLine());
 
-        sc.close();
+        for (int i = 1; i <= N; i++) {
+            for (int j = 0; j < i; j++) {
+                bw.write("*");
+            }
 
-        for (int i=1; i<=n; i++) {
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
+            for (int k = 0; k < 2 * (N - i); k++) {
+                bw.write(" ");
             }
-            for (int k=1; k<=2*(n-i); k++) {
-                System.out.print(" ");
+
+            for (int l = 0; l < i; l++) {
+                bw.write("*");
             }
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
+
+            bw.newLine();
         }
 
-        for (int i=n-1; i>0; i--) {
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
+        for (int m = 1; m < N; m++) {
+            for (int n = 0; n < N - m; n++) {
+                bw.write("*");
             }
-            for (int k=1; k<=2*(n-i); k++) {
-                System.out.print(" ");
+
+            for (int o = 0; o < 2 * m; o++) {
+                bw.write(" ");
             }
-            for (int j=1; j<=i; j++) {
-                System.out.print("*");
+
+            for (int p =0; p < N - m; p++) {
+                bw.write("*");
             }
-            System.out.println();
+
+            bw.newLine();
         }
+
+        bw.flush();
     }
 }
